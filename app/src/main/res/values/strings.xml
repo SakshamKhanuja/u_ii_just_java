@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Just Java</string>
+
+    <!--Labels-->
+    <string name="labelQuantity">Quantity</string>
+    <string name="labelPrice">Price</string>
+
+    <!--Default Entries-->
+    <string name="defaultQuantity">2</string>
+    <string name="defaultPrice">₹ 60.00</string>
+
+    <!--Buttons-->
+    <string name="buttonOrder">Order</string>
+    <string name="buttonIncrement">+</string>
+    <string name="buttonDecrement">-</string>
+</resources>
