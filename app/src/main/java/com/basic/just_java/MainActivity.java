@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         display(quantity);
-        displayPrice(quantity * 30);
+        displayMessage("Total: " + getPriceWithCurrencySymbol(quantity * 30) +
+                "\nThank you!");
     }
 
     /**
@@ -63,13 +64,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the calculate price value on the screen.
+     * This method displays the given message on the screen.
+     *
+     * @param message is the argument.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
+    }
+
+    /**
+     * Formats the total order amount with currency INR.
      *
      * @param number is total order amount.
      */
-    private void displayPrice(int number) {
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance(new Locale("eng",
-                "IN")).format(number));
+    private String getPriceWithCurrencySymbol(int number) {
+        return NumberFormat.getCurrencyInstance(new Locale("eng", "IN")).
+                format(number);
     }
 }
