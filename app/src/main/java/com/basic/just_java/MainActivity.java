@@ -30,9 +30,33 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the clicked view.
      */
     public void submitOrder(View view) {
-        display(quantity);
-        displayMessage("Total: " + getPriceWithCurrencySymbol(quantity * 30) +
-                "\nThank you!");
+        int price = calculatePrice(quantity);
+        String orderSummary = createOrderSummary(price);
+        displayMessage(orderSummary);
+    }
+
+    /**
+     * Calculates the total price of the order.
+     *
+     * @param quantity is the number of cups ordered.
+     * @return the total order amount.
+     */
+    private int calculatePrice(int quantity) {
+        return quantity * 30;
+    }
+
+    /**
+     * Creates the order summary for this order.
+     *
+     * @param price is the total price amount.
+     * @return a description of the user order.
+     */
+    private String createOrderSummary(int price) {
+        String orderSummary = "Name: Kaptain Kunal";
+        orderSummary += "\nQuantity: " + quantity;
+        orderSummary += "\nTotal: " + getPriceWithCurrencySymbol(price);
+        orderSummary += "\nThank you!";
+        return orderSummary;
     }
 
     /**
@@ -41,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the clicked view.
      */
     public void increment(View view) {
-        display(++quantity);
+        displayQuantity(++quantity);
     }
 
     /**
@@ -50,17 +74,17 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the clicked view.
      */
     public void decrement(View view) {
-        display(--quantity);
+        displayQuantity(--quantity);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      *
-     * @param number is the total number of cups.
+     * @param numberOfCoffee is the total number of cups.
      */
-    private void display(int number) {
+    private void displayQuantity(int numberOfCoffee) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText(String.valueOf(number));
+        quantityTextView.setText(String.valueOf(numberOfCoffee));
     }
 
     /**
@@ -69,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
      * @param message is the argument.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
@@ -79,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
      * @param number is total order amount.
      */
     private String getPriceWithCurrencySymbol(int number) {
-        return NumberFormat.getCurrencyInstance(new Locale("eng", "IN")).
-                format(number);
+        return NumberFormat.getCurrencyInstance(new Locale("eng", "IN"))
+                .format(number);
     }
 }

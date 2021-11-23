@@ -3,7 +3,7 @@
 
     <!--Labels-->
     <string name="labelQuantity">Quantity</string>
-    <string name="labelPrice">Price</string>
+    <string name="labelSummary">Order Summary</string>
 
     <!--Default Entries-->
     <string name="defaultQuantity">2</string>

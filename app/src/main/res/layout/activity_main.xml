@@ -37,10 +37,10 @@
 
     <TextView
         style="@style/LabelStyle"
-        android:text="@string/labelPrice" />
+        android:text="@string/labelSummary" />
 
     <TextView
-        android:id="@+id/price_text_view"
+        android:id="@+id/order_summary_text_view"
         style="@style/EntryStyle"
         android:layout_marginVertical="16dp"
         android:text="@string/defaultPrice" />
