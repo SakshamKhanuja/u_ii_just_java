@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">Just Java</string>
+    <string name="hint">Name</string>
 
     <!--Labels-->
     <string name="labelQuantity">Quantity</string>
     <string name="labelSummary">Order Summary</string>
+    <string name="labelToppings">Toppings</string>
+
+    <!--Toppings-->
+    <string name="toppingsOne">Whipped Cream</string>
+    <string name="toppingTwo">Chocolate</string>
 
     <!--Default Entries-->
     <string name="defaultQuantity">2</string>
@@ -13,4 +19,8 @@
     <string name="buttonOrder">Order</string>
     <string name="buttonIncrement">+</string>
     <string name="buttonDecrement">-</string>
+
+    <!--Toasts-->
+    <string name="toastLessThanOne">You cannot have less than 1 coffee</string>
+    <string name="toastMoreThan100">You cannot have more than 100 coffee</string>
 </resources>

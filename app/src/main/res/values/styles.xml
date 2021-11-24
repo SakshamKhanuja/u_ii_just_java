@@ -24,6 +24,11 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <!--Toppings Style-->
+    <style name="ToppingsStyle" parent="BasicView">
+        <item name="android:paddingStart">24dp</item>
+    </style>
+
     <!--Increment/Decrement Button Style-->
     <style name="ValueButtonStyle">
         <item name="android:layout_height">48dp</item>
