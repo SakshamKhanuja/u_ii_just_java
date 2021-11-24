@@ -2,6 +2,11 @@ package com.basic.just_java;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view is the clicked view.
      */
+    @SuppressLint("QueryPermissionsNeeded")
     public void submitOrder(View view) {
         EditText customerNameEditText = findViewById(R.id.edit_text_name);
         String name = customerNameEditText.getText().toString();
@@ -58,7 +64,35 @@ public class MainActivity extends AppCompatActivity {
         Log.v(TAG, "Is Whipped Cream CheckBox Checked? " + addWhippedCream);
         Log.v(TAG, "Is Chocolate CheckBox Checked? " + addChocolate);
 
-        displayMessage(orderSummary);
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        // Ensures only email apps gets this Intent.
+        emailIntent.setData(Uri.parse("mailto:"));
+        // Adding info - Subject and Message Body to send.
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.subject, name));
+        // Adding body - Order Info.
+        emailIntent.putExtra(Intent.EXTRA_TEXT, orderSummary);
+
+        // Logging sent email intent details.
+        Log.v(TAG, "Email Subject - " + emailIntent.getStringExtra(Intent.EXTRA_SUBJECT));
+        Log.v(TAG, "Email Body - " + emailIntent.getStringExtra(Intent.EXTRA_TEXT));
+
+        // Before sending check Device SDK Version.
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            try {
+                startActivity(emailIntent);
+            } catch (ActivityNotFoundException e) {
+                Log.d(TAG, "No Email App Found - " + e.getMessage());
+            }
+        } else {
+            /*
+             * Checks whether a compatible email app is present in the user's device, before sending
+             * this Intent.
+             */
+            if (emailIntent.resolveActivity(getPackageManager()) != null) {
+                // Send this Intent / Start email apps' activity.
+                startActivity(emailIntent);
+            }
+        }
     }
 
     /**
@@ -103,12 +137,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary(int price, String name, boolean addWhippedCream,
                                       boolean addChocolate) {
-        String orderSummary = "Name: " + name;
-        orderSummary += "\nAdd whipped cream? " + addWhippedCream;
-        orderSummary += "\nAdd Chocolate? " + addChocolate;
-        orderSummary += "\nQuantity: " + quantity;
-        orderSummary += "\nTotal: " + getPriceWithCurrencySymbol(price);
-        orderSummary += "\nThank you!";
+        String orderSummary = getString(R.string.summaryName, name);
+        orderSummary += getString(R.string.summaryToppingOne, String.valueOf(addWhippedCream));
+        orderSummary += getString(R.string.summaryToppingTwo, String.valueOf(addChocolate));
+        orderSummary += getString(R.string.summaryQuantity, quantity);
+        orderSummary += getString(R.string.summaryTotal, price);
+        orderSummary += getString(R.string.summaryThankYou);
         return orderSummary;
     }
 
@@ -162,25 +196,5 @@ public class MainActivity extends AppCompatActivity {
     private void displayQuantity(int numberOfCoffee) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText(String.valueOf(numberOfCoffee));
-    }
-
-    /**
-     * This method displays the given message on the screen.
-     *
-     * @param message is the argument.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
-
-    /**
-     * Formats the total order amount with currency INR.
-     *
-     * @param number is total order amount.
-     */
-    private String getPriceWithCurrencySymbol(int number) {
-        return NumberFormat.getCurrencyInstance(new Locale("eng", "IN"))
-                .format(number);
     }
 }

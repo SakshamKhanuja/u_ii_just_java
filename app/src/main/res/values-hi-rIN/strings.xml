@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">जस्ट जावा</string>
+    <string name="hint">"नाम"</string>
+
+    <!--Labels-->
+    <string name="labelQuantity">"मात्रा"</string>
+    <string name="labelSummary">सारांश</string>
+    <string name="labelToppings">टॉपिंग</string>
+
+    <!--Toppings-->
+    <string name="toppingsOne">"फेंटी हुई मलाई"</string>
+    <string name="toppingTwo">चॉकलेट</string>
+
+    <!--Buttons-->
+    <string name="buttonOrder">कॉफी ऑर्डर करें</string>
+
+    <!--Toasts-->
+    <string name="toastLessThanOne">आप 1 कॉफी से कम का ऑर्डर नहीं दे सकते</string>
+    <string name="toastMoreThan100">आप 100 से अधिक कॉफी नहीं ले सकते</string>
+
+    <!--Order Summary-->
+    <string name="summaryName">नाम: <xliff:g id="name">%s</xliff:g></string>
+    <string name="summaryToppingOne">\nव्हीप्ड क्रीम जोड़ें? <xliff:g id="toppingOne">%s</xliff:g></string>
+    <string name="summaryToppingTwo">\nचॉकलेट जोड़ें? <xliff:g id="toppingTwo">%s</xliff:g></string>
+    <string name="summaryQuantity">\nमात्रा: <xliff:g id="quantity">%d</xliff:g></string>
+    <string name="summaryTotal">\nकुल: ₹ <xliff:g id="total">%d</xliff:g></string>
+    <string name="summaryThankYou">\nधन्यवाद!</string>
+
+    <!--Email Intent-->
+    <string name="subject">जस्टजावा ऑर्डर <xliff:g id="subject">%s</xliff:g> के लिए</string>
+</resources>

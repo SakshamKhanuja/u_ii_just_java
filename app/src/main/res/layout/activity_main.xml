@@ -15,14 +15,12 @@
             android:id="@+id/edit_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:hint="@string/hint"
-            android:inputType="textCapWords"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textCapWords" />
 
         <TextView
-            style="@style/LabelStyle"
-            android:layout_marginBottom="16dp"
+            style="@style/HeaderTextStyle"
             android:text="@string/labelToppings" />
 
         <CheckBox
@@ -36,13 +34,10 @@
             android:text="@string/toppingTwo" />
 
         <TextView
-            style="@style/LabelStyle"
-            android:layout_marginTop="16dp"
+            style="@style/HeaderTextStyle"
             android:text="@string/labelQuantity" />
 
-        <LinearLayout
-            style="@style/BasicView"
-            android:layout_marginVertical="16dp">
+        <LinearLayout style="@style/BasicView">
 
             <Button
                 style="@style/ValueButtonStyle"
@@ -64,18 +59,9 @@
 
         </LinearLayout>
 
-        <TextView
-            style="@style/LabelStyle"
-            android:text="@string/labelSummary" />
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            style="@style/EntryStyle"
-            android:layout_marginVertical="16dp"
-            android:text="@string/defaultPrice" />
-
         <Button
             style="@style/BasicView"
+            android:layout_marginTop="16dp"
             android:onClick="submitOrder"
             android:text="@string/buttonOrder"
             tools:ignore="UsingOnClickInXml" />

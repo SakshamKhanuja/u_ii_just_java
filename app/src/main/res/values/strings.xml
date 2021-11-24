@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Just Java</string>
     <string name="hint">Name</string>
 
@@ -12,15 +12,26 @@
     <string name="toppingTwo">Chocolate</string>
 
     <!--Default Entries-->
-    <string name="defaultQuantity">2</string>
-    <string name="defaultPrice">₹ 60.00</string>
+    <string name="defaultQuantity" translatable="false">2</string>
+    <string name="defaultPrice" translatable="false">₹ 60.00</string>
 
     <!--Buttons-->
     <string name="buttonOrder">Order</string>
-    <string name="buttonIncrement">+</string>
-    <string name="buttonDecrement">-</string>
+    <string name="buttonIncrement" translatable="false">+</string>
+    <string name="buttonDecrement" translatable="false">-</string>
 
     <!--Toasts-->
     <string name="toastLessThanOne">You cannot have less than 1 coffee</string>
     <string name="toastMoreThan100">You cannot have more than 100 coffee</string>
+
+    <!--Order Summary-->
+    <string name="summaryName">Name: <xliff:g id="name">%s</xliff:g></string>
+    <string name="summaryToppingOne">\nAdd Whipped Cream? <xliff:g id="toppingOne">%s</xliff:g></string>
+    <string name="summaryToppingTwo">\nAdd Chocolate? <xliff:g id="toppingTwo">%s</xliff:g></string>
+    <string name="summaryQuantity">\nQuantity: <xliff:g id="quantity">%d</xliff:g></string>
+    <string name="summaryTotal">\nTotal: ₹ <xliff:g id="total">%d</xliff:g></string>
+    <string name="summaryThankYou">\nThank you!</string>
+
+    <!--Email Intent-->
+    <string name="subject">JustJava order for <xliff:g id="subject">%s</xliff:g></string>
 </resources>
